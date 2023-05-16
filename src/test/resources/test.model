@@ -1,0 +1,13 @@
+entity User {
+    String name
+    String login
+    String password
+    Integer age
+}
+
+enum State {
+    ACTIVE
+    INACTIVE
+    BLOCKED
+    CANCELED
+}
