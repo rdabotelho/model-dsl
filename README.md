@@ -157,7 +157,7 @@ To use the Model DSL, just configure the dependency in the maven file
 <dependency>
     <groupId>com.m2r</groupId>
     <artifactId>model-dsl</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
