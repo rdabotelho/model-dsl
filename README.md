@@ -20,7 +20,7 @@ There is a variety of applicability for the Model DSL, among them we highlight:
 - Reports generation
 - Codes gereration
 
-> At the end we will show a small practical case of how to make a ASCII class diagram generator with the DSL model
+> At the end we will show a small practical case of how to make a ASCII class diagram generator with the Model DSL
 
 ## Model DSL Syntax
 
@@ -58,7 +58,7 @@ Parameter declaration:
 Field type declaration (can be lowercase):
 
 ```bash
-String | Integer | Long | Double | Float | Boolean | Number | Date | DateTime| List
+String | Integer | Long | Double | Float | Boolean | Number | Date | DateTime | List
 ```
 
 ### Entity example
@@ -67,7 +67,7 @@ String | Integer | Long | Double | Float | Boolean | Number | Date | DateTime| L
 entity User (table: 'SYSTEM_USER') {
     String name (label: 'Name', required: 'true')
     String login
-    String pssword (encode: 'true')
+    String password (encode: 'true')
     Integer age
     Boolean active
 }
@@ -184,6 +184,7 @@ Use the method `parse` from the class `ModelDsl` to generate metadata with your 
 String filePath = "my-test.model";
 try (Reader reader = new FileReader(filePath)) {
     DomainList metadata = ModelDsl.parse(reader);
+    
     // Here you can generate everything you want
     metadata.getDomains().forEach(domain -> {
         System.out.println("Entity or Enum: " + domain.getName());
@@ -215,6 +216,7 @@ public class ClassDiagram {
                 "}";
 
         DomainList metadata = ModelDsl.parse(code);
+        
         System.out.println(String.format("+%24s+", " ").replace(" ", "-") );
         metadata.getDomains().forEach(domain -> {
             System.out.println(String.format("| %-22s |", domain.getName()));
