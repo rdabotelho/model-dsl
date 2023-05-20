@@ -98,6 +98,11 @@ public class StringWrapper {
         return getValue().replaceAll("/", ".");
     }
 
+    public String replace(String regex, String replaciment) {
+        if (value == null) return null;
+        return getValue().replaceAll(regex, replaciment);
+    }
+
     @Override
     public String toString() {
         return value;

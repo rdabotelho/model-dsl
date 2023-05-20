@@ -1,0 +1,5 @@
+# RELEASE NEWS
+
+1. Now a lib
+2. Created new methods in StringWrapper
+ - replace
