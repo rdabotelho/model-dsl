@@ -7,7 +7,7 @@ import java.util.List;
 public class DomainList {
 
     private StringWrapper projectName;
-    private List<com.m2r.mdsl.model.Domain> domains = new ArrayList<>();
+    private List<Domain> domains = new ArrayList<>();
     private StringWrapper basePackage;
 
     public DomainList() {

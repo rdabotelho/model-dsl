@@ -6,16 +6,16 @@ import com.m2r.mdsl.utils.StringWrapper;
 
 public class DomainAttribute {
 
-    private com.m2r.mdsl.model.Domain parent;
+    private Domain parent;
     private StringWrapper type;
     private StringWrapper name;
     private Map<String, ParamValue> params = new HashMap<>();
-    private com.m2r.mdsl.model.Domain typeDomain;
+    private Domain typeDomain;
 
     public DomainAttribute() {
     }
 
-    public DomainAttribute(com.m2r.mdsl.model.Domain parent) {
+    public DomainAttribute(Domain parent) {
         this.parent = parent;
     }
 
