@@ -51,6 +51,11 @@ public class ModelParser extends Parser<DomainList> {
 		return token.getType() == TokenType.SPACE;
 	}
 
+	@Override
+	protected Object newResult() {
+		return new DomainList();
+	}
+
 	private void updateDomainList() {
 		TokenIterator tokens = TokenIterator.of(getTokens());
 		tokens.next();

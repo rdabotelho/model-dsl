@@ -1,15 +1,17 @@
 package com.m2r.mdsl.model;
 
 import com.m2r.mdsl.utils.StringWrapper;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DomainList {
 
     private StringWrapper projectName;
-    private List<Domain> domains = new ArrayList<>();
+    private List<com.m2r.mdsl.model.Domain> domains = new ArrayList<>();
     private StringWrapper basePackage;
+
+    public DomainList() {
+    }
 
     public StringWrapper getProjectName() {
         return projectName;

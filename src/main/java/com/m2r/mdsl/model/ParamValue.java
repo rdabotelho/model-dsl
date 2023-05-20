@@ -1,7 +1,6 @@
 package com.m2r.mdsl.model;
 
 import com.m2r.mdsl.utils.StringWrapper;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +9,9 @@ public class ParamValue {
 
     private boolean isArray = true;
     private List<StringWrapper> values = new ArrayList<>();
+
+    public ParamValue() {
+    }
 
     public ParamValue(boolean isArray) {
         this.isArray = isArray;

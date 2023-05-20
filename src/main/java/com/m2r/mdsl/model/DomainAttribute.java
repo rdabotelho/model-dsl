@@ -1,19 +1,21 @@
 package com.m2r.mdsl.model;
 
-import com.m2r.mdsl.utils.StringWrapper;
-
 import java.util.HashMap;
 import java.util.Map;
+import com.m2r.mdsl.utils.StringWrapper;
 
 public class DomainAttribute {
 
-    private Domain parent;
+    private com.m2r.mdsl.model.Domain parent;
     private StringWrapper type;
     private StringWrapper name;
     private Map<String, ParamValue> params = new HashMap<>();
-    private Domain typeDomain;
+    private com.m2r.mdsl.model.Domain typeDomain;
 
-    public DomainAttribute(Domain parent) {
+    public DomainAttribute() {
+    }
+
+    public DomainAttribute(com.m2r.mdsl.model.Domain parent) {
         this.parent = parent;
     }
 
@@ -71,23 +73,24 @@ public class DomainAttribute {
     }
 
     public boolean isOneToOne() {
-        ParamValue param = getParam("manyToOne");
-        return hasTypeDomain() && !isEnum() && !isList() && !(param != null && param.toString().equals("true"));
-    }
-
-    public boolean isManyToOne() {
-        ParamValue param = getParam("manyToOne");
-        return hasTypeDomain() && !isList() && param != null && param.toString().equals("true");
+        return hasTypeDomain() && !isEnum() && !isList() && !existParamEquals("manyToOne", "true");
     }
 
     public boolean isOneToMany() {
-        ParamValue param = getParam("manyToMany");
-        return isList() && !(param != null && param.toString().equals("true"));
+        return isList() && !existParamEquals("manyToMany", "true");
+    }
+
+    public boolean isManyToOne() {
+        return hasTypeDomain() && !isList() && existParamEquals("manyToOne", "true");
     }
 
     public boolean isManyToMany() {
-        ParamValue param = getParam("manyToMany");
-        return isList() && param != null && param.toString().equals("true");
+        return isList() && existParamEquals("manyToMany", "true");
+    }
+
+    private boolean existParamEquals(String paramName, String value) {
+        ParamValue param = getParam(paramName);
+        return param != null && param.toString().equals(value);
     }
 
     public StringWrapper getItemType() {

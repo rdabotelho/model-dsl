@@ -1,7 +1,6 @@
 package com.m2r.mdsl.model;
 
 import com.m2r.mdsl.utils.StringWrapper;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +14,9 @@ public class Domain {
     private List<DomainAttribute> attributes = new ArrayList<>();
     private Map<String, ParamValue> params = new HashMap<>();
     private Domain compositionOwner;
+
+    public Domain() {
+    }
 
     public Domain(DomainList parent) {
         this.parent = parent;
