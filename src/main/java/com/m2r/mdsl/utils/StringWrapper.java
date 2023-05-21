@@ -27,12 +27,50 @@ public class StringWrapper {
 
     public String toCamelCase() {
         if (value == null) return null;
-        return value.substring(0, 1).toLowerCase() + value.substring(1);
+
+        if (value.indexOf(' ') == -1) {
+            return value.substring(0, 1).toLowerCase() + value.substring(1);
+        }
+
+        StringBuilder camelCase = new StringBuilder();
+        boolean capitalizeNext = false;
+        for (char c : value.toCharArray()) {
+            if (Character.isWhitespace(c)) {
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    camelCase.append(Character.toUpperCase(c));
+                    capitalizeNext = false;
+                } else {
+                    camelCase.append(Character.toLowerCase(c));
+                }
+            }
+        }
+        return camelCase.toString();
     }
 
     public String toPascalCase() {
         if (value == null) return null;
-        return value.substring(0, 1).toUpperCase() + value.substring(1);
+
+        if (value.indexOf(' ') == -1) {
+            return value.substring(0, 1).toUpperCase() + value.substring(1);
+        }
+
+        StringBuilder pascalCase = new StringBuilder();
+        boolean capitalizeNext = true;
+        for (char c : value.toCharArray()) {
+            if (Character.isWhitespace(c)) {
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    pascalCase.append(Character.toUpperCase(c));
+                    capitalizeNext = false;
+                } else {
+                    pascalCase.append(Character.toLowerCase(c));
+                }
+            }
+        }
+        return pascalCase.toString();
     }
 
     public String toSnakeLowerCase() {
