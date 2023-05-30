@@ -73,7 +73,7 @@ public class DomainAttribute {
     }
 
     public boolean isOneToOne() {
-        return hasTypeDomain() && !isEnum() && !isList() && !existParamEquals("manyToOne", "true");
+        return hasTypeDomain() && !isEnum() && !isList() && existParamEquals("oneToOne", "true");
     }
 
     public boolean isOneToMany() {
@@ -81,7 +81,7 @@ public class DomainAttribute {
     }
 
     public boolean isManyToOne() {
-        return hasTypeDomain() && !isList() && existParamEquals("manyToOne", "true");
+        return hasTypeDomain() && !isEnum() && !isList() && !existParamEquals("oneToOne", "true");
     }
 
     public boolean isManyToMany() {
